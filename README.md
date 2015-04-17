@@ -1,2 +1,0 @@
-# favorites
-An intelligent favorites.
