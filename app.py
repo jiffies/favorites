@@ -1,12 +1,16 @@
 from flask import Flask,render_template,request,abort,redirect,url_for
 from flask_debugtoolbar import DebugToolbarExtension
 import views
+from models import flask_db
 
 app = Flask(__name__)
 app.debug = True
 app.config['SECRET_KEY'] = 'code4awesome'
+DATABASE = 'mysql://root:root@localhost:3306/favorites'
+app.config.from_object(__name__)
 
 toolbar = DebugToolbarExtension(app)
+flask_db.init_app(app)
 
 app.register_blueprint(views.blueprint)
 
