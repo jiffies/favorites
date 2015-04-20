@@ -35,6 +35,12 @@ class User(flask_db.Model):
             webpages.user = self
         return query
 
+    def add_folder(self,folder):
+        User_Folder.create(user=self, folder=folder)
+
+    def add_webpage(self,webpage):
+        User_Webpage.create(user=self, webpage=webpage)
+
 class Folder(flask_db.Model):
     id = PrimaryKeyField()
     folder_name = CharField(unique=True)
@@ -43,11 +49,9 @@ class Folder(flask_db.Model):
     def webpages(self):
         query = (Webpage
                 .select()
-                .join(UserFolder_UserWebpage)
+                .join(UserFolder_Webpage)
                 .join(User_Folder)
-                .join(User_Webpage)
-                .where(User_Folder.folder == self & User_Folder.user == self.user))
-        query.execute()
+                .where((User_Folder.folder == self) & (User_Folder.user == self.user)))
         return query
                                     
 
@@ -55,14 +59,14 @@ class Folder(flask_db.Model):
     def userfolder(self):
         query = (User_Folder
                 .select()
-                .where(User_Folder.user == self.user &
-                    User_Folder.folder == self))
+                .where((User_Folder.user == self.user) &
+                    (User_Folder.folder == self)))
         query.execute()
         return query
 
     def add_webpage(self,webpage):
-        UserFolder_UserWebpage.create(userfolder=self.userfolder,
-                userwebpage=webpage.userwebpage)
+        UserFolder_Webpage.create(userfolder=self.userfolder,
+                webpage=webpage)
 
     
 class User_Folder(flask_db.Model):
@@ -92,9 +96,9 @@ class User_Webpage(flask_db.Model):
 
 
 #only someone's webpage could add in someone's folder,someone must be the same person.
-class UserFolder_UserWebpage(flask_db.Model):
+class UserFolder_Webpage(flask_db.Model):
     userfolder = ForeignKeyField(User_Folder)
-    userwebpage = ForeignKeyField(User_Webpage)
+    webpage = ForeignKeyField(Webpage)
 
 
 

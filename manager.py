@@ -5,7 +5,7 @@ import os
 from flask.ext.script import Manager, Server
 from flask.ext.script.commands import ShowUrls, Clean
 from favorites import create_app
-from favorites.models import flask_db,User,Folder,User_Folder,Webpage,User_Webpage,UserFolder_UserWebpage
+from favorites.models import flask_db,User,Folder,User_Folder,Webpage,User_Webpage,UserFolder_Webpage
 import favorites.models
 import populate as data
 
@@ -57,7 +57,7 @@ def populate():
         Webpage.insert_many(data.Webpage).execute()
         User_Folder.insert_many(data.User_Folder).execute()
         User_Webpage.insert_many(data.User_Webpage).execute()
-        UserFolder_UserWebpage.insert_many(data.UserFolder_UserWebpage).execute()
+        UserFolder_Webpage.insert_many(data.UserFolder_Webpage).execute()
     
 
     

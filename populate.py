@@ -64,10 +64,10 @@ User_Webpage = [
         {'id':11,'user':4,'webpage':8},        
 ]
 
-UserFolder_UserWebpage = [
-        {'userfolder':1,'userwebpage':1},        
-        {'userfolder':1,'userwebpage':2},        
-        {'userfolder':1,'userwebpage':3},        
-        {'userfolder':2,'userwebpage':2},        
-        {'userfolder':2,'userwebpage':4},        
+UserFolder_Webpage = [
+        {'userfolder':1,'webpage':1},        
+        {'userfolder':1,'webpage':2},        
+        {'userfolder':1,'webpage':3},        
+        {'userfolder':2,'webpage':3},        
+        {'userfolder':2,'webpage':4},        
 ]
