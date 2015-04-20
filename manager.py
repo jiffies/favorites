@@ -11,8 +11,9 @@ import populate as data
 
 # default to dev config because no one should use this in
 # production anyway
+
 env = os.environ.get('FAVORITES_ENV', 'dev')
-app = create_app('favorites.settings.%sConfig' % env.capitalize(), env=env)
+app = create_app('favorites.config_%s.%sConfig' % (env,env.capitalize()), env=env)
 
 manager = Manager(app)
 manager.add_command("show-urls", ShowUrls())
