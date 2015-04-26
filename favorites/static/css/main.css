@@ -34,6 +34,8 @@ body {
     background-repeat: repeat-x;
     width: 100%;
     height: 15px;
+    margin-top:20px;
+    margin-bottom:5px;
 }
 #teapot-bg {
     border: 0px solid #80C9A5;
@@ -57,4 +59,20 @@ body {
 
 footer p {
     color: #62483D;
+}
+
+.nav-item {
+    background: white;
+    border: 2px solid #BBE4CF;
+    height:28px;
+}
+
+.nav-item a {
+    text-align: center;
+    line-height: 24px;
+    color: #8E6C57;
+}
+
+.nav-item a:hover {
+    text-decoration:none;
 }
