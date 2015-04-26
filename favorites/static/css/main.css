@@ -1,0 +1,60 @@
+body {
+    background: #F9D195;
+}
+
+#title-image {
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*display: block;*/
+}
+
+#title-text {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    top: 20px;
+    font: 30px/1.1em "Chelsea Market",fantasy;
+    color: #8E6C57;
+}
+#title-father {
+    position:relative;
+}
+#title-description{
+    position:absolute;
+    left:0;
+    right:0;
+    text-align:center;
+    font: 1.3em "Kelly Slab",fantasy;
+    color: #62483D;
+    bottom:0px;
+}
+.separator {
+    background-image: url("/static/img/star_separator_line.png");
+    background-repeat: repeat-x;
+    width: 100%;
+    height: 15px;
+}
+#teapot-bg {
+    border: 0px solid #80C9A5;
+    background-color: #80C9A5;
+    border-radius: 50%;
+    width:150px;
+    height:150px;
+    position:relative;
+    margin-bottom: -30px;
+    margin-top: 50px;
+}
+
+#teapot {
+    position:absolute;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+    margin:auto;
+}
+
+footer p {
+    color: #62483D;
+}

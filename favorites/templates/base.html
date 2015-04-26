@@ -1,11 +1,74 @@
-<!doctype html>
-<html>
-<head>
-<title>Hello from Flask</title>
-</head>
-<body>
-{% for user in users %}
-  <h1>Hello {{ user.username }}!</h1>
-{% endfor %}
-</body>
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    {% block metas %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endblock %}
+    <link rel="shortcut icon" href="{{ url_for('static',filename='img/favicon.ico') }}" />
+    <title>EasyPage</title>
+
+    <!-- Bootstrap -->
+    {% block styles %}
+    <link href="{{ url_for('static',filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/main.css') }}" rel="stylesheet">
+    {% endblock %}
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header>
+    <div class="container">
+        <div class="row">
+            <div  class="col-md-2 col-md-offset-5">
+                <div id="teapot-bg" class="center-block">
+                    <img id="teapot" class="img-responsive center-block" src="{{ url_for('static',filename="img/teapot.png") }}" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="title-father" class="col-md-6 col-md-offset-3">
+                <img class="img-responsive center-block" id="title-image" src="{{ url_for('static',filename='img/title.png') }}" alt="title">
+                <span id="title-text">Easy Page</span>
+                <span id="title-description">AUTO MANGER URL</span>
+            </div>
+        </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="separator"></div>
+                </div>
+            </div>
+        
+    </div>
+    </header>
+
+    <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="separator"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 pull-left">
+                        <p>Powered by Jiffies@shanghai 2015.Theme from Wix.com.</p>
+                    </div>
+                    <div class="col-md-4 pull-right"></div>
+                </div>
+            </div>
+    </footer>
+
+    {% block scripts %}
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+    {% endblock %}
+  </body>
 </html>
