@@ -10,8 +10,8 @@ env.hosts = ['121.40.194.92']
 _TAR_FILE = 'dist-favorites.tar.gz'
 
 def build():
-    includes = ['favorites/*','requirements.txt','manager.py','wsgi.py']
-    excludes = ['*.pyc']
+    includes = ['favorites/*','requirements.txt','manager.py','wsgi.py','populate.py']
+    excludes = ['*.pyc','*.swp']
     local('rm -f dist/%s' % _TAR_FILE)
     with lcd(os.path.abspath('.')):
         cmd = ['tar','-czvf','dist/%s' % _TAR_FILE]
@@ -39,6 +39,7 @@ def deploy():
             sudo('chown jiffies:jiffies www')
             sudo('chown -R jiffies:jiffies %s' % newdir)
     # 重启Python服务和nginx服务器:
+    run('export FAVORITES_ENV=prod')
     with settings(warn_only=True):
         sudo('supervisorctl stop favorites')
         sudo('supervisorctl start favorites')
