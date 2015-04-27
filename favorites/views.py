@@ -9,4 +9,7 @@ def hello_world():
     users = User.select()
     return render_template('base.html',users=users)
 
-
+@blueprint.route('/folders')
+def folders():
+    user = User.get()
+    return render_template('folders.html',folders=user.folders)

@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+{% block content %}
+
+        <div class="container">
+            <div class="row">
+                {% for folder in folders %}
+                <div class="col-md-4 folder-box">
+                    <div class="folder panel panel-default">
+                        <div class="panel-heading">{{ folder.folder_name }}</div>
+                        <ul class="list-group">
+                            {% for webpage in folder.webpages %}
+                            <li class="list-group-item">{{ webpage.url }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+{% endblock %}

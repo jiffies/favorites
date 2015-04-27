@@ -76,3 +76,36 @@ footer p {
 .nav-item a:hover {
     text-decoration:none;
 }
+
+#content {
+    margin-top:20px;
+}
+
+.panel {
+    height: 360px;
+    overflow: auto;
+    border-width:10px;
+    border-style:solid;
+}
+
+.folder-box:nth-child(7n+1) .folder {
+    border-color:#FF98BF;
+}
+.folder-box:nth-child(7n+2) .folder {
+    border-color:#93D9D2;
+}
+.folder-box:nth-child(7n+3) .folder {
+    border-color:#EEFF78;
+}
+.folder-box:nth-child(7n+4) .folder {
+    border-color:#BBED7B;
+}
+.folder-box:nth-child(7n+5) .folder {
+    border-color:#85C5C0;
+}
+.folder-box:nth-child(7n+6) .folder {
+    border-color:#8EE995;
+}
+.folder-box:nth-child(7n+7) .folder {
+    border-color:#93DED6;
+}
