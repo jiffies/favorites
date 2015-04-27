@@ -1,3 +1,10 @@
+@media (max-width: 992px) {
+    body{font-size: 14px;}
+}
+@media (max-width: 768px) {
+    body{font-size: 10px;}
+}
+
 body {
     background: #F9D195;
 }
@@ -13,8 +20,8 @@ body {
     left: 0px;
     right: 0px;
     text-align: center;
-    top: 20px;
-    font: 30px/1.1em "Chelsea Market",fantasy;
+    top: 20%;
+    font: 2.1em/1.1em "Chelsea Market",fantasy;
     color: #8E6C57;
 }
 #title-father {
@@ -71,6 +78,7 @@ footer p {
     text-align: center;
     line-height: 24px;
     color: #8E6C57;
+    font-weight:bold;
 }
 
 .nav-item a:hover {
@@ -108,4 +116,8 @@ footer p {
 }
 .folder-box:nth-child(7n+7) .folder {
     border-color:#93DED6;
+}
+
+#content .panel {
+    color:#62483D;
 }

@@ -6,8 +6,8 @@
                 {% for folder in folders %}
                 <div class="col-md-4 folder-box">
                     <div class="folder panel panel-default">
-                        <div class="panel-heading">{{ folder.folder_name }}</div>
                         <ul class="list-group">
+                            <li class="list-group-item">{{ folder.folder_name }}</li>
                             {% for webpage in folder.webpages %}
                             <li class="list-group-item">{{ webpage.url }}</li>
                             {% endfor %}
