@@ -12,81 +12,58 @@ class User(flask_db.Model):
     join_at = DateField()
 
     @property
-    def folders(self):
-        query = (Folder
+    def userfolders(self):
+        query = (User_Folder
                 .select()
-                .join(User_Folder)
                 .join(User)
                 .where(User.id == self.id))
-        query.execute()
-        for folder in query:
-            folder.user = self
         return query
                 
     @property
-    def webpages(self):
-        query = (Webpage
+    def userwebpages(self):
+        query = (User_Webpage
                 .select()
-                .join(User_Webpage)
                 .join(User)
                 .where(User.id == self.id))
-        query.execute()
-        for webpages in query:
-            webpages.user = self
         return query
 
     def add_folder(self,folder):
-        User_Folder.create(user=self, folder=folder)
+        return User_Folder.create(user=self, folder=folder)
 
     def add_webpage(self,webpage):
-        User_Webpage.create(user=self, webpage=webpage)
+        return User_Webpage.create(user=self, webpage=webpage)
 
 class Folder(flask_db.Model):
     id = PrimaryKeyField()
     folder_name = CharField(unique=True)
 
-    @property
-    def webpages(self):
-        query = (Webpage
-                .select()
-                .join(UserFolder_Webpage)
-                .join(User_Folder)
-                .where((User_Folder.folder == self) & (User_Folder.user == self.user)))
-        return query
-                                    
 
-    @property
-    def userfolder(self):
-        query = (User_Folder
-                .select()
-                .where((User_Folder.user == self.user) &
-                    (User_Folder.folder == self)))
-        query.execute()
-        return query
 
-    def add_webpage(self,webpage):
-        UserFolder_Webpage.create(userfolder=self.userfolder,
-                webpage=webpage)
 
-    
+#Folder,Webpage is a common property.User_Folder and UserFolder_Webpage like a proxy for real world use.
 class User_Folder(flask_db.Model):
     id = PrimaryKeyField()
     user = ForeignKeyField(User)
     folder = ForeignKeyField(Folder)
+    parent = ForeignKeyField('self',null=True,related_name='subfolders')
+
+    @property
+    def userfolder_webpages(self):
+        query = (UserFolder_Webpage
+                .select()
+                .where((UserFolder_Webpage.userfolder == self)))
+        return query
+
+    def add_webpage(self,userwebpage):
+        webpage = userwebpage.webpage
+        return UserFolder_Webpage.create(userfolder=self,
+                webpage=webpage)
 
 class Webpage(flask_db.Model):
     id = PrimaryKeyField()
     url = CharField(unique=True)
     abstract = TextField()
 
-    @property
-    def userwebpage(self):
-        query = (User_Webpage
-                .select()
-                .where(User_Webpage.user == self.user &
-                    User_Webpage.webpage == self))
-        query.execute()
-        return query
 
 
 class User_Webpage(flask_db.Model):

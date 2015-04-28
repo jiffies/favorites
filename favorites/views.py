@@ -12,4 +12,4 @@ def hello_world():
 @blueprint.route('/folders')
 def folders():
     user = User.get()
-    return render_template('folders.html',folders=user.folders)
+    return render_template('folders.html',folders=user.userfolders)

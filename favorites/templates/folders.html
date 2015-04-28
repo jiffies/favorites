@@ -6,10 +6,15 @@
                 {% for folder in folders %}
                 <div class="col-md-4 folder-box">
                     <div class="folder panel panel-default">
+                        <div class="panel-heading">{{folder.folder.folder_name}}</div>
                         <ul class="list-group">
-                            <li class="list-group-item">{{ folder.folder_name }}</li>
-                            {% for webpage in folder.webpages %}
-                            <li class="list-group-item">{{ webpage.url }}</li>
+                                {% for sub in folder.subfolders %}
+                            <li class="list-group-item">
+                                <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
+                                {{ sub.folder.folder_name }}</li>
+                                {% endfor %}
+                            {% for webpage in folder.userfolder_webpages %}
+                            <li class="list-group-item">{{ webpage.webpage.url }}</li>
                             {% endfor %}
                         </ul>
                     </div>
